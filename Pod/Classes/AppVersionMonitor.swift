@@ -22,7 +22,7 @@ public class AppVersionMonitor {
     public let state: State
     public let installedVersions: [AppVersion]
     
-    func startup() {
+    public func startup() {
         
     }
     
