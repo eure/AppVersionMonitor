@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+
+target 'AppVersionMonitor_Tests', :exclusive => true do
+  pod "AppVersionMonitor", :path => "../"
+
+  
+end
