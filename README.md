@@ -25,10 +25,29 @@ pod "AppVersionMonitor"
 
 ## Usage
 
+#### Setup
+
+```swift
+
+// AppDelegate
+
+func applicationDidFinishLaunching(application: UIApplication) {
+
+    AppVersionMonitor.sharedMonitor.startup()
+}
+
+```
+
 #### Get MarketingVersion (CFBundleShortVersionString)
 ```
 let currentVersion: AppVersion = AppVersion.marketingVersion
 let versionString: String = AppVersion.marketingVersion.versionString // "1.2.3"
+```
+
+#### Get installed version
+
+```swift
+let installedVersions: [AppVersion] = AppVersionMonitor.sharedMonitor.installedVersions
 ```
 
 #### Compare Version
@@ -68,13 +87,6 @@ case .Downgraded(let previousVersion: AppVersion):
 
 }
 ```
-
-#### Get installed version
-
-```swift
-let installedVersions: [AppVersion] = AppVersionMonitor.sharedMonitor.installedVersions
-```
-
 
 ## Author
 
