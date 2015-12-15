@@ -17,7 +17,7 @@ public class AppVersionMonitor {
         case Downgraded(previousVersion: AppVersion)
     }
     
-    static let sharedMonitor = AppVersionMonitor()
+    public static let sharedMonitor = AppVersionMonitor()
     
     public let state: State
     public let installedVersions: [AppVersion]
