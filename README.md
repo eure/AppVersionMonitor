@@ -11,8 +11,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-iOS8.0 +
-[Semantic Versioning](http://semver.org/)
+- iOS8.0 +
+- [Semantic Versioning](http://semver.org/)
 
 ## Installation
 
@@ -25,13 +25,13 @@ pod "AppVersionMonitor"
 
 ## Usage
 
-Get MarketingVersion (CFBundleShortVersionString)
+#### Get MarketingVersion (CFBundleShortVersionString)
 ```
 let currentVersion: AppVersion = AppVersion.marketingVersion
 let versionString: String = AppVersion.marketingVersion.versionString // "1.2.3"
 ```
 
-Compare Version
+#### Compare Version
 
 ```swift
 AppVersion.marketingVersion > AppVersion("1.2.3")
@@ -39,7 +39,7 @@ AppVersion("1.2.3") < AppVersion("3.2.1")
 AppVersion("1.2.3") < "3.2.1"
 ```
 
-You can check app version status easily.
+#### You can check app version status easily.
 ```swift
 switch AppVersionMonitor.sharedMonitor.state {
 case .Installed:
@@ -69,6 +69,11 @@ case .Downgraded(let previousVersion: AppVersion):
 }
 ```
 
+#### Get installed version
+
+```swift
+let installedVersions: [AppVersion] = AppVersionMonitor.sharedMonitor.installedVersions
+```
 
 
 ## Author
