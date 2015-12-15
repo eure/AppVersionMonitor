@@ -1,0 +1,6 @@
+framework module AppVersionMonitor {
+  umbrella header "AppVersionMonitor-umbrella.h"
+
+  export *
+  module * { export * }
+}

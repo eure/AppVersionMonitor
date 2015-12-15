@@ -11,6 +11,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+iOS8.0 +
+[Semantic Versioning](http://semver.org/)
+
 ## Installation
 
 AppVersionMonitor is available through [CocoaPods](http://cocoapods.org). To install
@@ -20,9 +23,57 @@ it, simply add the following line to your Podfile:
 pod "AppVersionMonitor"
 ```
 
+## Usage
+
+Get MarketingVersion (CFBundleShortVersionString)
+```
+let currentVersion: AppVersion = AppVersion.marketingVersion
+let versionString: String = AppVersion.marketingVersion.versionString // "1.2.3"
+```
+
+Compare Version
+
+```swift
+AppVersion.marketingVersion > AppVersion("1.2.3")
+AppVersion("1.2.3") < AppVersion("3.2.1")
+AppVersion("1.2.3") < "3.2.1"
+```
+
+You can check app version status easily.
+```swift
+switch AppVersionMonitor.sharedMonitor.state {
+case .Installed:
+
+// Do something when app installed.
+// Happy! 🍻
+// ex. Start tutorial.
+
+case .NotChanged:
+
+// Do something when version not changed.
+// Peace 😌
+// Nothing to do?
+
+case .Upgraded(let previousVersion: AppVersion):
+
+// Do something when version upgraded.
+// Yeah! 😝
+// ex. Migration App Data.
+
+case .Downgraded(let previousVersion: AppVersion):
+
+// Do something when version downgraded. (Impossible normally)
+// What happened? 😵
+// ex. Purge App Data.
+
+}
+```
+
+
+
 ## Author
 
-muukii, m@muukii.me
+muukii <m@muukii.me>
 
 ## License
 

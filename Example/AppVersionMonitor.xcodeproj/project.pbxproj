@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		10380C0E3C8D819138504E8B /* Pods_AppVersionMonitor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E4EEF473B3FD2468FFE813 /* Pods_AppVersionMonitor_Tests.framework */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		4B398AD21C20636C003A05D5 /* AppVersionCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B398AD11C20636C003A05D5 /* AppVersionCheckerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00861FA51F907075C7FA5136 /* Pods-AppVersionMonitor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVersionMonitor_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppVersionMonitor_Tests/Pods-AppVersionMonitor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D5ECE9574E33C6F5744A6EC /* Pods-AppVersionMonitor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVersionMonitor_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVersionMonitor_Tests/Pods-AppVersionMonitor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		23B9AD8043117C591727F19F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = AppVersionMonitor_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B398AD11C20636C003A05D5 /* AppVersionCheckerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionCheckerTests.swift; sourceTree = "<group>"; };
+		607FACE51AFB9204008FA782 /* AppVersionMonitor_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppVersionMonitor_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		918C7D057EADEFF6C9062DF4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		91E4EEF473B3FD2468FFE813 /* Pods_AppVersionMonitor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppVersionMonitor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A79327D85D4B70DD56F5CE /* AppVersionMonitor.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AppVersionMonitor.podspec; path = ../AppVersionMonitor.podspec; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACE51AFB9204008FA782 /* Tests.xctest */,
+				607FACE51AFB9204008FA782 /* AppVersionMonitor_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,7 +66,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				4B398AD11C20636C003A05D5 /* AppVersionCheckerTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -118,7 +118,7 @@
 			);
 			name = AppVersionMonitor_Tests;
 			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* Tests.xctest */;
+			productReference = 607FACE51AFB9204008FA782 /* AppVersionMonitor_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -127,12 +127,12 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -217,7 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				4B398AD21C20636C003A05D5 /* AppVersionCheckerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +320,6 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppVersionMonitor_Example.app/AppVersionMonitor_Example";
 			};
 			name = Debug;
 		};
@@ -335,7 +334,6 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppVersionMonitor_Example.app/AppVersionMonitor_Example";
 			};
 			name = Release;
 		};

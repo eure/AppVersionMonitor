@@ -1,0 +1,14 @@
+PODS:
+  - AppVersionMonitor (0.1.0)
+
+DEPENDENCIES:
+  - AppVersionMonitor (from `../`)
+
+EXTERNAL SOURCES:
+  AppVersionMonitor:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AppVersionMonitor: 38a6b489f67bbe60c647a54cc6c0cd251a26c231
+
+COCOAPODS: 0.39.0
