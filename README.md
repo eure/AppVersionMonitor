@@ -77,7 +77,7 @@ case .Upgraded(let previousVersion: AppVersion):
 
 // Do something when version upgraded.
 // Yeah! 😝
-// ex. Migration App Data.
+// ex. Migrate App Data.
 
 case .Downgraded(let previousVersion: AppVersion):
 
