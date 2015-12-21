@@ -6,6 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/AppVersionMonitor.svg?style=flat)](http://cocoapods.org/pods/AppVersionMonitor)
 
 **Monitor iOS app version easily.**
+
 You can get previous version and installation history.
 
 ## Usage
