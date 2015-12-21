@@ -5,6 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/AppVersionMonitor.svg?style=flat)](http://cocoapods.org/pods/AppVersionMonitor)
 [![Platform](https://img.shields.io/cocoapods/p/AppVersionMonitor.svg?style=flat)](http://cocoapods.org/pods/AppVersionMonitor)
 
+**Monitor iOS app version easily.**
+You can get previous version and installation history.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
