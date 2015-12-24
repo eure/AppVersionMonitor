@@ -101,3 +101,10 @@ public struct AppVersion: StringLiteralConvertible, Comparable {
         self.versionString = value
     }
 }
+
+extension AppVersion: CustomStringConvertible {
+    public var description: String {
+        return self.versionString
+    }
+}
+
