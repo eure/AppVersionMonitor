@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "AppVersionMonitor"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.summary          = "Monitor iOS app version easily."
 
   s.description      = "Monitor iOS app version easily!"
