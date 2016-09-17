@@ -23,14 +23,14 @@
 
 import Foundation
 
-private func parseVersion(lhs: AppVersion, rhs: AppVersion) -> Zip2Sequence<[Int], [Int]> {
+private func parseVersion(_ lhs: AppVersion, rhs: AppVersion) -> Zip2Sequence<[Int], [Int]> {
     
-    let lhs = lhs.versionString.characters.split(".").map { (String($0) as NSString).integerValue }
-    let rhs = rhs.versionString.characters.split(".").map { (String($0) as NSString).integerValue }
+    let lhs = lhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
+    let rhs = rhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
     let count = max(lhs.count, rhs.count)
     return zip(
-        lhs + Array(count: count - lhs.count, repeatedValue: 0),
-        rhs + Array(count: count - rhs.count, repeatedValue: 0))
+        lhs + Array(repeating: 0, count: count - lhs.count),
+        rhs + Array(repeating: 0, count: count - rhs.count))
 }
 
 public func == (lhs: AppVersion, rhs: AppVersion) -> Bool {
@@ -57,11 +57,11 @@ public func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
     return false
 }
 
-public struct AppVersion: StringLiteralConvertible, Comparable {
+public struct AppVersion: ExpressibleByStringLiteral, Comparable {
     
     public static var marketingVersion: AppVersion {
         
-        if let dic = NSBundle.mainBundle().infoDictionary {
+        if let dic = Bundle.main.infoDictionary {
             return AppVersion(dic["CFBundleShortVersionString"] as! String)
         } else {
             fatalError()
@@ -70,14 +70,14 @@ public struct AppVersion: StringLiteralConvertible, Comparable {
     
     public static var version: AppVersion {
         
-        if let dic = NSBundle.mainBundle().infoDictionary {
+        if let dic = Bundle.main.infoDictionary {
             return AppVersion(dic[kCFBundleVersionKey as String] as! String)
         } else {
             fatalError()
         }
     }
     
-    private(set) public var versionString: String
+    fileprivate(set) public var versionString: String
     
     public init(_ versionString: String) {
         

@@ -23,47 +23,47 @@
 
 import Foundation
 
-public class AppVersionMonitor {
+open class AppVersionMonitor {
         
     public enum State {
-        case NotChanged
-        case Installed
-        case Upgraded(previousVersion: AppVersion)
-        case Downgraded(previousVersion: AppVersion)
+        case notChanged
+        case installed
+        case upgraded(previousVersion: AppVersion)
+        case downgraded(previousVersion: AppVersion)
     }
     
-    public static let sharedMonitor = AppVersionMonitor()
+    open static let sharedMonitor = AppVersionMonitor()
     
-    public let state: State
-    public let installedVersions: [AppVersion]
+    open let state: State
+    open let installedVersions: [AppVersion]
     
-    public func startup() {
+    open func startup() {
         
     }
     
     init() {
         
-        let userDefaults = NSUserDefaults(suiteName: AppVersionMonitor.userDefaultsSuitename)
+        let userDefaults = UserDefaults(suiteName: AppVersionMonitor.userDefaultsSuitename)
         defer {
             userDefaults?.synchronize()
         }
         
-        var installedVersions = (userDefaults?.objectForKey(AppVersionMonitor.installedVersionsKey) as? [String])?.map { AppVersion($0) } ?? []
+        var installedVersions = (userDefaults?.object(forKey: AppVersionMonitor.installedVersionsKey) as? [String])?.map { AppVersion($0) } ?? []
         
-        let _latestVersionString = userDefaults?.stringForKey(AppVersionMonitor.latestVersionKey)
-        userDefaults?.setObject(AppVersion.marketingVersion.versionString, forKey: AppVersionMonitor.latestVersionKey)
+        let _latestVersionString = userDefaults?.string(forKey: AppVersionMonitor.latestVersionKey)
+        userDefaults?.set(AppVersion.marketingVersion.versionString, forKey: AppVersionMonitor.latestVersionKey)
         
         if installedVersions.contains(AppVersion.marketingVersion) == false {
             
             installedVersions.append(AppVersion.marketingVersion)
-            userDefaults?.setObject(installedVersions.map { $0.versionString }, forKey: AppVersionMonitor.installedVersionsKey)
+            userDefaults?.set(installedVersions.map { $0.versionString }, forKey: AppVersionMonitor.installedVersionsKey)
         }
         
         self.installedVersions = installedVersions
 
         guard let latestVersionString = _latestVersionString else {
             
-            self.state = .Installed
+            self.state = .installed
             return
             
         }
@@ -72,19 +72,19 @@ public class AppVersionMonitor {
         
         if latestVersion < AppVersion.marketingVersion {
             
-            self.state = .Upgraded(previousVersion: latestVersion)
+            self.state = .upgraded(previousVersion: latestVersion)
             
         } else if latestVersion > AppVersion.marketingVersion {
             
-            self.state = .Downgraded(previousVersion: latestVersion)
+            self.state = .downgraded(previousVersion: latestVersion)
             
         } else {
             
-            self.state = .NotChanged
+            self.state = .notChanged
         }
     }
     
-    private static let latestVersionKey = "me.muukii.AppVersionMonitor.latestVersion"
-    private static let installedVersionsKey = "me.muukii.AppVersionMonitor.installedVersionsKey"
-    private static let userDefaultsSuitename = "me.muukii.AppVersionMonitor"
+    fileprivate static let latestVersionKey = "me.muukii.AppVersionMonitor.latestVersion"
+    fileprivate static let installedVersionsKey = "me.muukii.AppVersionMonitor.installedVersionsKey"
+    fileprivate static let userDefaultsSuitename = "me.muukii.AppVersionMonitor"
 }
