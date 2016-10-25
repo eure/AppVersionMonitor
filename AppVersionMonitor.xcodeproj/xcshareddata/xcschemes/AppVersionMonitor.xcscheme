@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03F7E20FB90764DA50932696A7ADDBDC"
+               BlueprintIdentifier = "4B48F5691DBF030900353C61"
                BuildableName = "AppVersionMonitor.framework"
                BlueprintName = "AppVersionMonitor"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:AppVersionMonitor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03F7E20FB90764DA50932696A7ADDBDC"
+            BlueprintIdentifier = "4B48F5691DBF030900353C61"
             BuildableName = "AppVersionMonitor.framework"
             BlueprintName = "AppVersionMonitor"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            ReferencedContainer = "container:AppVersionMonitor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4B48F5691DBF030900353C61"
+            BuildableName = "AppVersionMonitor.framework"
+            BlueprintName = "AppVersionMonitor"
+            ReferencedContainer = "container:AppVersionMonitor.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
