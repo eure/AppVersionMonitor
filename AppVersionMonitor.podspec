@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "AppVersionMonitor"
-  s.version          = "1.3.0"
+  s.version          = "1.3.1"
   s.summary          = "Monitor iOS app version easily."
 
   s.description      = "Monitor iOS app version easily!"
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'AppVersionMonitor/**/*'
+  s.source_files = 'Sources/AppVersionMonitor/**/*.swift'
 end
