@@ -20,11 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import Foundation
 
 private func parseVersion(_ lhs: AppVersion, rhs: AppVersion) -> Zip2Sequence<[Int], [Int]> {
-    
+
     let lhs = lhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
     let rhs = rhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
     let count = max(lhs.count, rhs.count)
@@ -34,19 +33,15 @@ private func parseVersion(_ lhs: AppVersion, rhs: AppVersion) -> Zip2Sequence<[I
 }
 
 public func == (lhs: AppVersion, rhs: AppVersion) -> Bool {
-    
-    var result: Bool = true
-    for (l, r) in parseVersion(lhs, rhs: rhs) {
-            
-        if l != r {
-            result = false
-        }
-    }    
-    return result
+
+    for (l, r) in parseVersion(lhs, rhs: rhs) where l != r {
+        return false
+    }
+    return true
 }
 
 public func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
-    
+
     for (l, r) in parseVersion(lhs, rhs: rhs) {
         if l < r {
             return true
@@ -58,46 +53,44 @@ public func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
 }
 
 public struct AppVersion: ExpressibleByStringLiteral, Comparable {
-    
+
     public static var marketingVersion: AppVersion {
-        
-        if let dic = Bundle.main.infoDictionary {
-            return AppVersion(dic["CFBundleShortVersionString"] as! String)
-        } else {
-            fatalError()
-        }
+
+        guard let dic = Bundle.main.infoDictionary else { fatalError() }
+        guard let shortVersion = dic["CFBundleShortVersionString"] as? String else { fatalError() }
+
+        return AppVersion(shortVersion)
     }
-    
+
     public static var version: AppVersion {
-        
-        if let dic = Bundle.main.infoDictionary {
-            return AppVersion(dic[kCFBundleVersionKey as String] as! String)
-        } else {
-            fatalError()
-        }
+
+        guard let dic = Bundle.main.infoDictionary else { fatalError() }
+        guard let version = dic[kCFBundleVersionKey as String] as? String else { fatalError() }
+
+        return AppVersion(version)
     }
-    
+
     fileprivate(set) public var versionString: String
-    
+
     public init(_ versionString: String) {
-        
+
         self.versionString = versionString
     }
-    
+
     // MARK: StringLiteralConvertible
-    
+
     public init(stringLiteral value: String) {
-        
+
         self.versionString = value
     }
-    
+
     public init(unicodeScalarLiteral value: String) {
-        
+
         self.versionString = value
     }
-    
+
     public init(extendedGraphemeClusterLiteral value: String) {
-        
+
         self.versionString = value
     }
 }
@@ -107,4 +100,3 @@ extension AppVersion: CustomStringConvertible {
         return self.versionString
     }
 }
-

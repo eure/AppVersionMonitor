@@ -20,70 +20,69 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import Foundation
 
 open class AppVersionMonitor {
-        
+
     public enum State {
         case notChanged
         case installed
         case upgraded(previousVersion: AppVersion)
         case downgraded(previousVersion: AppVersion)
     }
-    
+
     open static let sharedMonitor = AppVersionMonitor()
-    
+
     open let state: State
     open let installedVersions: [AppVersion]
-    
+
     open func startup() {
-        
+
     }
-    
+
     init() {
-        
+
         let userDefaults = UserDefaults(suiteName: AppVersionMonitor.userDefaultsSuitename)
         defer {
             userDefaults?.synchronize()
         }
-        
+
         var installedVersions = (userDefaults?.object(forKey: AppVersionMonitor.installedVersionsKey) as? [String])?.map { AppVersion($0) } ?? []
-        
+
         let _latestVersionString = userDefaults?.string(forKey: AppVersionMonitor.latestVersionKey)
         userDefaults?.set(AppVersion.marketingVersion.versionString, forKey: AppVersionMonitor.latestVersionKey)
-        
+
         if installedVersions.contains(AppVersion.marketingVersion) == false {
-            
+
             installedVersions.append(AppVersion.marketingVersion)
             userDefaults?.set(installedVersions.map { $0.versionString }, forKey: AppVersionMonitor.installedVersionsKey)
         }
-        
+
         self.installedVersions = installedVersions
 
         guard let latestVersionString = _latestVersionString else {
-            
+
             self.state = .installed
             return
-            
+
         }
-        
+
         let latestVersion = AppVersion(latestVersionString)
-        
+
         if latestVersion < AppVersion.marketingVersion {
-            
+
             self.state = .upgraded(previousVersion: latestVersion)
-            
+
         } else if latestVersion > AppVersion.marketingVersion {
-            
+
             self.state = .downgraded(previousVersion: latestVersion)
-            
+
         } else {
-            
+
             self.state = .notChanged
         }
     }
-    
+
     fileprivate static let latestVersionKey = "me.muukii.AppVersionMonitor.latestVersion"
     fileprivate static let installedVersionsKey = "me.muukii.AppVersionMonitor.installedVersionsKey"
     fileprivate static let userDefaultsSuitename = "me.muukii.AppVersionMonitor"
