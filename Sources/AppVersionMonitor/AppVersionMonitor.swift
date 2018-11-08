@@ -32,10 +32,10 @@ open class AppVersionMonitor {
         case downgraded(previousVersion: AppVersion)
     }
     
-    open static let sharedMonitor = AppVersionMonitor()
+    public static let sharedMonitor = AppVersionMonitor()
     
-    open let state: State
-    open let installedVersions: [AppVersion]
+    public let state: State
+    public let installedVersions: [AppVersion]
     
     open func startup() {
         

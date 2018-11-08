@@ -25,8 +25,8 @@ import Foundation
 
 private func parseVersion(_ lhs: AppVersion, rhs: AppVersion) -> Zip2Sequence<[Int], [Int]> {
     
-    let lhs = lhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
-    let rhs = rhs.versionString.characters.split(separator: ".").map { (String($0) as NSString).integerValue }
+    let lhs = lhs.versionString.split(separator: ".").map { (String($0) as NSString).integerValue }
+    let rhs = rhs.versionString.split(separator: ".").map { (String($0) as NSString).integerValue }
     let count = max(lhs.count, rhs.count)
     return zip(
         lhs + Array(repeating: 0, count: count - lhs.count),
