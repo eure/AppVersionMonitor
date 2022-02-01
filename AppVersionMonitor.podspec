@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Sources/AppVersionMonitor/**/*.swift'
+  s.swift_versions = ["5.3", "5.4", "5.5"]
 end
